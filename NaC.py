@@ -1,5 +1,6 @@
 from filewriter import writeResult, load_game, save_game, load_statistics
 from random import randrange
+import os
 
 #Board class is where the program builds new boards stored in a board_grid list
 class Board:
@@ -301,7 +302,10 @@ type anything else to quit
 
 
     elif command == "3" or command == "leaderboard":
-        load_statistics()
+        if not os.path.exists("./slutuppgift/leaderboard.txt") or not os.path.exists("./slutuppgift/results.txt"):
+            print("Currently unavailable, try playing a game first!")
+        else:
+            load_statistics()
         return True
     else:
         return False
