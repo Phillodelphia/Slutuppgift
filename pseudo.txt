@@ -1,0 +1,109 @@
+CLASS playground:
+    variable playground equals to empty list
+
+    function init take in size X and size Y 
+        self x
+        self y 
+        call function create playground that takes in x and y
+
+    function create playground takes in self, x and y 
+        
+        FOR i IN range from 0 to y
+            temporary list equals to empty list
+
+            FOR j IN range from 0 to x
+                APPEND "-" in temporary list
+            
+            APPEND temporary list in playground
+        
+        RETURN playground
+
+    function checkbounds takes in x and y 
+        IF the x and y is higher or lower than playground y or x 
+            RETURN True
+        ELSE
+            RETURN False
+
+    function check_win takes in x, y, diffX and diffY 
+        WHILE !checkbounds takes in -x +1 and -y +1 
+            -x plus equals to diffX
+            -y plus equals to diffY
+        FOR i IN range up to y 
+            IF playground[x][y] equals to player marker
+                counter increment
+            ELSE 
+                counter equals to 0
+            x plus equals diffX
+            y plus equals diffY
+        IF counter equals to 3
+            currentplayer wins is True
+
+    function search_marker takes in currentplayer, x and y
+        counter equals to 0
+
+        curPos equals to x plus y  
+        FOR i in range from i to y 
+            FOR j in range from j to x 
+                IF !checkbounds or x and y equals to x and y
+                    RETURN False
+
+                ELIF playground[i][j] has currentplayers marker in it
+                    newX equals to i - index of y 
+                    newY equals to j - index of x 
+                    check_win takes in i, j, newX and newY
+
+
+    function placemarker takes currentplayer, x and y 
+        IF !checkbounds or playground[x][y] equals to "x" or "o"
+            print not valid
+        ELSE
+            playground[x][y] equals to players marker
+
+Class player:
+    players equals to empty list
+    turn equals to True
+
+    function init takes in name and marker
+        self name equals to name
+        self marker equals to marker
+        self win equals to False
+        append player in players list
+    
+    function turn 
+        !turn
+        IF turn
+            RETURN players[1]
+        ELSE
+            RETURN players[0] 
+
+
+    
+
+function playgame takes in name1 and name2
+    variable turn equals to player turn
+    playground equals to new playground
+
+    while !player one win or !player two win
+        print playground
+        input cordinates x and y
+        placemarker x and y
+        search_marker
+        switch turn
+    print currentplayer wins
+
+
+
+function main
+    INPUT that takes command
+
+    IF command equals y
+        input name of first player
+        input name of second player
+        playgame()
+        
+    ELSE 
+        RETURN False
+
+WHILE main()
+    print "play again?"
+    
