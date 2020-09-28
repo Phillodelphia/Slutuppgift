@@ -26,8 +26,13 @@ class Board:
     
     #prints the board
     def printBoard(self):
+        
+        print("".ljust(4), " ".join(str(i).rjust(4) for i in range(1, len(self.board_grid[0])+1)))
+
         for i, y in enumerate(self.board_grid):
             print(f"{str(i+1).ljust(5)} {y}")
+        
+            
 
     # Checks if 2 cordinates is inside the list
     def check_bound(self, x, y):
@@ -159,7 +164,7 @@ You can quit anytime by typing "quit"
         
         board.printBoard()
         currentPlayer = switch_turn(turn)
-        print(f"{currentPlayer.name}'s turn")
+        print(f"{currentPlayer.name}'s turn\n")
         try:
             #If the player is a robot make them randomize a coordinate
             if currentPlayer.typeP == "robot":
@@ -225,23 +230,23 @@ def main():
 3. or leaderboard to load statistics and leaderboard
 type anything else to quit
     ''')
-    command = input("Do you want to play? type y or yes").lower()
+    command = input("Do you want to play? Input: ").lower()
 
     #Starts up a new game and builds a new board
     if command == "1" or command == "y" or command == "yes":
-        command = input("Type 1 for singelplayer or type 2 for 2 player match")
+        command = input("Type 1 for singelplayer or type 2 for 2 player match Input: ")
         
 
         if command != "1" and command != "2":
             print("Going back")
             return True
 
-        name = input("Player one what is your name?")
+        name = input("Player one what is your name? Name: ")
         add_players(name, "X")
 
         #if command equals to 2, add a second player
         if command == "2":
-            name = input("Player two what is your name?")
+            name = input("Player two what is your name? Name: ")
             add_players(name, "O")
 
         #if singleplayer create a bot
@@ -251,7 +256,7 @@ type anything else to quit
             bot.typeP = "robot"
     
         try:
-            size = int(input("How big is the board? Input one number"))
+            size = int(input("How big is the board? Input a number that will equal both height and width of the board. Input: "))
         except ValueError:
             print("width and height have to be an integer, default size will be set")
             size = 3
