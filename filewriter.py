@@ -25,7 +25,7 @@ def writeResult(winner, players):
     movesTotal = players[0].moves + players[1].moves
     
     total = 1
-    filename = "./slutuppgift/results.txt"
+    filename = "results.txt"
     try: 
         values = []
         with open(filename, "r") as a:
@@ -86,9 +86,9 @@ Total move winners: {movesTotalwinnerO}
 
 #saves game into json file
 def save_game(board, players, turn, filename):
-    if not os.path.exists("./slutuppgift/saves"):
+    if not os.path.exists("saves"):
         try:
-            os.mkdir("./slutuppgift/saves")
+            os.mkdir("saves")
         except:
             print("something went wrong!")
             raise
@@ -99,7 +99,7 @@ def save_game(board, players, turn, filename):
             "player2": players[1].__dict__,
             "currentTurn": turn
         }
-        json_file = open(f"./slutuppgift/saves/{filename}.json", "w+")
+        json_file = open(f"saves/{filename}.json", "w+")
         json.dump(jstring, json_file)
         json_file.close()
     except:
@@ -107,7 +107,7 @@ def save_game(board, players, turn, filename):
 
 #loads game from json file
 def load_game(filename):
-    json_file = open(f"./slutuppgift/saves/{filename}.json", "r")
+    json_file = open(f"saves/{filename}.json", "r")
     data = json.load(json_file)
     data_collection = data
     return data_collection
@@ -115,7 +115,7 @@ def load_game(filename):
 #updates leaderboard
 #Not the cleanest code
 def write_leaderboard(winner, loser):
-    filename = "./slutuppgift/leaderboard.txt"
+    filename = "leaderboard.txt"
     score = total = 1
 
     if not os.path.exists(filename):
@@ -126,7 +126,7 @@ def write_leaderboard(winner, loser):
         print("Created new leaderboard file")
         data.close()
     else:
-        filename = "./slutuppgift/leaderboard.txt"
+        filename = "leaderboard.txt"
         try:
             
             values = []
@@ -183,7 +183,7 @@ def write_leaderboard(winner, loser):
 def load_statistics():
     result = []
     values = []
-    filename = "./slutuppgift/results.txt"
+    filename = "results.txt"
     
     data = open(filename, "r")
 
@@ -191,7 +191,7 @@ def load_statistics():
 
     print("---------Leaderboard----------")
 
-    filename = "./slutuppgift/leaderboard.txt"
+    filename = "leaderboard.txt"
     
     data = open(filename, "r")
     for row in data:

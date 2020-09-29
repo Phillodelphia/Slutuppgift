@@ -1,0 +1,1 @@
+{"game": {"width": 3, "height": 3, "rule": 3, "board_grid": [["X", "-", "O"], ["-", "X", "-"], ["O", "-", "-"]]}, "player1": {"name": "Philip", "marker": "X", "moves": 2, "typeP": "human", "win": false}, "player2": {"name": "Bot", "marker": "O", "moves": 2, "typeP": "robot", "win": false}, "currentTurn": false}
