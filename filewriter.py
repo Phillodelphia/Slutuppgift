@@ -76,12 +76,11 @@ Total move winners: {movesTotalwinnerO}
                 '''
         data.write(string)
         print("Statistic file has been created in ", filename)
-    
-    for player in players:
-        if player != winner.name:
-            loser = player
-
-    write_leaderboard(winner, loser)
+    if not winner == False:
+        for player in players:
+            if player != winner.name:
+                loser = player
+            write_leaderboard(winner, loser)
     
 
 #saves game into json file
