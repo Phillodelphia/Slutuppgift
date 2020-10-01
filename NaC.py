@@ -307,7 +307,7 @@ type anything else to quit
 
 
     elif command == "3" or command == "leaderboard":
-        if not os.path.exists("./slutuppgift/leaderboard.txt") or not os.path.exists("./slutuppgift/results.txt"):
+        if not os.path.exists("leaderboard.txt") or not os.path.exists("results.txt"):
             print("Currently unavailable, try playing a game first!")
         else:
             load_statistics()
